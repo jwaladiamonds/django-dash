@@ -33,11 +33,19 @@ pip install -r requirements.txt
 
 To initialise `. ./init`
 
+* `dji` - Install packages
+* `djg` - Deployment
 * `djr` - Run server
 * `dje` - Reset project database
 * `djp` - Dump data from database in to db.json
 * `djm` - Migrate data
 * `djx` - Deactivate virtual environment
+
+Admin username: admin
+Admin password: admin@123
+
+User list: http://localhost:8000/dashboard/users/
+Test user's password: test@123
 
 ## PostgreSQL
 

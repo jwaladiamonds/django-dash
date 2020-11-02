@@ -8,6 +8,19 @@ function djsecret {
   echo "DJANGO_SECRET=$(python -c 'from django.core.management.utils import get_random_secret_key;print(get_random_secret_key())')"
 }
 
+function dji {
+  pip install -r requirements.txt
+}
+
+function djii {
+  pip install -Ur requirements_list.txt
+}
+
+function djg {
+  python manage.py collectstatic
+  gunicorn -w 3 -b 0.0.0.0:8000 config.wsgi
+}
+
 function dje {
   find ./accounts/migrations  ! -name '__init__.py' -type f -exec rm -rf {} + 2>/dev/null
   rm -rf ./config/db.sqlite3 ./assets ./media ./staticfiles 2>/dev/null

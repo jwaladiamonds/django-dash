@@ -3,7 +3,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$jEpJPKULsw9P$usU6IUMHm3LRvGF2WA4IeKgJs12Pr/LCjYLEYTrc2vY=",
-    "last_login": "2020-10-21T07:18:44Z",
+    "last_login": "2020-11-02T11:25:38.287Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "Django",
@@ -16,6 +16,90 @@
     "email_verified": true,
     "picture": "",
     "birthday": "2020-10-21",
+    "groups": [],
+    "user_permissions": []
+  }
+}, {
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$O6b23HsDhCCg$24oy8GbC6CTyLoSdM52YoF2/igDtvdPFMabmI1q8CqU=",
+    "last_login": "2020-11-02T10:58:03.613Z",
+    "is_superuser": false,
+    "username": "bob",
+    "first_name": "Bob",
+    "last_name": "Catcher",
+    "email": "test@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-11-02T10:57:29.162Z",
+    "bio": "I am a Test User",
+    "email_verified": true,
+    "picture": "",
+    "birthday": "2010-01-01",
+    "groups": [],
+    "user_permissions": []
+  }
+}, {
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$O6b23HsDhCCg$24oy8GbC6CTyLoSdM52YoF2/igDtvdPFMabmI1q8CqU=",
+    "last_login": "2020-11-02T10:58:03.613Z",
+    "is_superuser": false,
+    "username": "john",
+    "first_name": "John",
+    "last_name": "Carter",
+    "email": "test@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-11-02T10:57:29.162Z",
+    "bio": "I am a Test User",
+    "email_verified": false,
+    "picture": "",
+    "birthday": "2010-01-01",
+    "groups": [],
+    "user_permissions": []
+  }
+}, {
+  "model": "accounts.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$O6b23HsDhCCg$24oy8GbC6CTyLoSdM52YoF2/igDtvdPFMabmI1q8CqU=",
+    "last_login": "2020-11-02T10:58:03.613Z",
+    "is_superuser": false,
+    "username": "alice",
+    "first_name": "Alice",
+    "last_name": "Peterson",
+    "email": "test@gmail.com",
+    "is_staff": false,
+    "is_active": false,
+    "date_joined": "2020-11-02T10:57:29.162Z",
+    "bio": "I am a Test User",
+    "email_verified": true,
+    "picture": "",
+    "birthday": "2010-01-01",
+    "groups": [],
+    "user_permissions": []
+  }
+}, {
+  "model": "accounts.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$O6b23HsDhCCg$24oy8GbC6CTyLoSdM52YoF2/igDtvdPFMabmI1q8CqU=",
+    "last_login": "2020-11-02T10:58:03.613Z",
+    "is_superuser": false,
+    "username": "george",
+    "first_name": "George",
+    "last_name": "Striker",
+    "email": "test@gmail.com",
+    "is_staff": false,
+    "is_active": false,
+    "date_joined": "2020-11-02T10:57:29.162Z",
+    "bio": "I am a Test User",
+    "email_verified": false,
+    "picture": "",
+    "birthday": "2010-01-01",
     "groups": [],
     "user_permissions": []
   }

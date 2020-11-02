@@ -3,6 +3,8 @@ django-crispy-forms
 django-environ
 google-api-python-client
 google-auth-oauthlib
+gunicorn
 Pillow
 sorl-thumbnail
 six
+whitenoise[brotli]

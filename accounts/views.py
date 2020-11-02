@@ -15,7 +15,7 @@ from accounts.models import User
 @login_required
 @permission_required("is_staff", login_url='/dashboard/')
 def gmail(request):
-    mailer.set_state_session(request)
+    request.session['oauth_state'] = mailer.auth_state
     return redirect(mailer.auth_uri)
 
 
@@ -24,7 +24,7 @@ def gmail(request):
 def gmail_verify(request):
     code = request.GET.get('code', '')
     state = request.GET.get('state', '')
-    if code and state == request.session['oauth_state']:
+    if code and request.session.has_key('oauth_state') and state == request.session['oauth_state']:
         mailer.verify(code)
     else:
         messages.error(request, "Invalid code/state found.")
@@ -59,6 +59,11 @@ class UserLogin(views.LoginView):
 class SignUpView(CreateView):
     form_class = SignUpForm
     template_name = 'auth/signup.html'
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        return redirect('core:home')
 
     def form_valid(self, form):
         if mailer.activated:
@@ -158,6 +163,6 @@ def user_delete(request, username):
         return redirect('dash:profile')
 
 
-user_login = UserLogin.as_view()
+user_login = UserLogin.as_view(redirect_authenticated_user=True)
 user_signup = SignUpView.as_view()
 user_logout = views.LogoutView.as_view()

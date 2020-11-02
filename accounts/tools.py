@@ -45,8 +45,6 @@ class Gmail:
         self.service = None
         self.email = None
 
-    def set_state_session(self, request):
-        request.session['oauth_state'] = self.auth_state
 
     def _create_message(self, subject, message_text, from_email, recipient_list, html):
         message = MIMEMultipart()

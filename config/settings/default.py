@@ -17,9 +17,8 @@ from environ import Env
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = Env(
-    DEBUG=(bool, False),
     DJANGO_SECRET=(str, '7(vh94ytfxtxa$$9edz$7fdiv8+ej2_u+d5azrfslo59cwg^$h'))
-    
+
 Env.read_env(env_file=str(BASE_DIR.parent/'.env'))
 
 # Quick-start development settings - unsuitable for production
@@ -29,7 +28,7 @@ Env.read_env(env_file=str(BASE_DIR.parent/'.env'))
 SECRET_KEY = env('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 
