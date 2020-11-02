@@ -1,0 +1,28 @@
+{% extends "../layouts/base.html" %}
+{% load static %}
+
+{% block title %} Gmail {% endblock %}
+
+{% block page_tools %}
+  {% if not credentials %}
+    <a role="button" class="btn btn-sm btn-outline-success mr-2" href="{% url 'auth:gmail' %}">Activate</a>
+  {% else %}
+    <a role="button" class="btn btn-sm btn-outline-success mr-2" href="{% url 'auth:gmail_revoke' %}">Deactivate</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5">
+    {% if credentials %}
+      <p>email: {{ credentials.email }}</p>
+      <p>token: {{ credentials.token }}</p>
+      <p>refresh_token: {{ credentials.refresh_token }}</p>
+      <p>token_uri: {{ credentials.token_uri }}</p>
+      <p>client_id: {{ credentials.client_id }}</p>
+      <p>client_secret: {{ credentials.client_secret }}</p>
+      <p>scopes: {{ credentials.scopes }}</p>
+    {% else %}
+      Not activated
+    {% endif %}
+  </div>
+{% endblock %}

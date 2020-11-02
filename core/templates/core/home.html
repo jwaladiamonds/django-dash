@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% block content %}
+<main role="main" class="inner cover">
+  <h1 class="cover-heading">Django Auth</h1>
+  {% if user.is_authenticated %}
+  <p class="lead">Welcome, {{ user.username }}</p>
+  {% else %}
+  <p class="lead">Django authentication example</p>
+  {% endif %}
+  <p class="lead pt-5">
+    <a href="https://github.com/nikhiljohn10/django-auth" class="btn btn-lg btn-secondary">Source Code</a><br>
+  </p>
+</main>
+{% endblock %}

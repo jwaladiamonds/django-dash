@@ -1,0 +1,22 @@
+[{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$jEpJPKULsw9P$usU6IUMHm3LRvGF2WA4IeKgJs12Pr/LCjYLEYTrc2vY=",
+    "last_login": "2020-10-21T07:18:44Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Django",
+    "last_name": "Administrator",
+    "email": "admin@localhost",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-10-21T07:18:43Z",
+    "bio": "I am the Django Administrator",
+    "email_verified": true,
+    "picture": "",
+    "birthday": "2020-10-21",
+    "groups": [],
+    "user_permissions": []
+  }
+}]

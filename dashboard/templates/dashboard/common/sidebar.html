@@ -1,0 +1,57 @@
+{% load thumbnail %}
+{% load static %}
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="sidebar-sticky pt-3">
+    <div class="text-center">
+      <h5 class="h5 mb-3">
+        {% if user.picture %}
+            {% thumbnail user.picture "100x100" crop="center" as img %}
+            <img class="shadow-sm p-1 bg-white border rounded-circle" src="{{ img.url }}" width="{{ img.width }}" height="{{ img.height }}">
+            {% empty %}
+            <img class="shadow-sm p-1 bg-white border rounded-circle" src="{{ user.picture.url }}" width="100" height="100">
+            {% endthumbnail %}
+          {% else %}
+          <img class="shadow-sm p-1 bg-white border rounded-circle" src="{% static 'assets/img/profile-picture.png' %}" width="100" height="100">
+        {% endif %}
+      </h5>
+      <h5 class="h5 mb-3">
+        <span>Welcome, {% if user.first_name %}Mr.{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</span>
+      </h5>
+    </div>
+    <hr>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <div class="d-flex align-items-center text-muted">
+        <span data-feather="home" class="mr-2"></span>Home
+      </div>
+    </h6>
+    <ul class="nav flex-column mb-2 ml-4">
+
+      {% url 'dash:home' as url %}
+      {% include 'dashboard/common/sidebar-item.html' with name='Dashboard' icon='monitor' %}
+
+      {% url 'dash:profile' as url %}
+      {% include 'dashboard/common/sidebar-item.html' with name='Profile' icon='user' %}
+
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <div class="d-flex align-items-center text-muted">
+        <span data-feather="settings" class="mr-2"></span>Settings
+      </div>
+    </h6>
+    <ul class="nav flex-column mb-2 ml-4">
+
+      {% if user.is_staff %}
+
+        {% url 'dash:users' as url %}
+        {% include 'dashboard/common/sidebar-item.html' with name='Users' icon='users' %}
+
+        {% url 'dash:gmail' as url %}
+        {% include 'dashboard/common/sidebar-item.html' with name='Gmail' icon='mail' %}
+
+      {% endif %}
+
+    </ul>
+  </div>
+</nav>

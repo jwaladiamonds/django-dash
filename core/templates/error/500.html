@@ -1,0 +1,13 @@
+{% extends '../core/base.html' %}
+
+{% block title %} Error 500 {% endblock %}
+
+{% block content %}
+<main role="main" class="inner cover">
+    <h6 class="mb-2">Error 500</h6>
+    <h4 class="mb-5">
+        Server Error - Please contact support
+    </h4>
+    <a href="{% url 'core:home' %}" class="btn btn-primary btn-round">Home</a>
+</main>
+{% endblock %}

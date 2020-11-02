@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {% include 'common/head.html' %}
+
+  <title>{% block title %}Django Auth{% endblock %}</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+
+  {% include 'common/styles.html' %}
+  <link href="{% static 'assets/css/home.css' %}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+  {% include 'common/messages.html' %}
+
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <a href="{% url 'core:home' %}"><h3 class="masthead-brand">Django Auth</h3></a>
+        <nav class="nav nav-masthead justify-content-center">
+          {% if user.is_authenticated %}
+          <a class="nav-link" href="{% url 'dash:home' %}">Dashboard</a>
+          <a class="nav-link" href="{% url 'auth:logout' %}?next=/">Sign Out</a>
+          {% else %}
+          <a class="nav-link" href="{% url 'auth:login' %}?next=/">Sign In</a>
+          <a class="nav-link" href="{% url 'auth:signup' %}?next=/">Sign Up</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Django Auth using <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://github.com/nikhiljohn10">@nikzjon</a>.</p>
+      </div>
+    </footer>
+  </div>
+  {% include 'common/scripts.html' %}
+  <script type="text/javascript">
+    $('html').addClass('d-none');
+    $(document).ready(function() {
+      $('html').removeClass('d-none');
+    });
+  </script>
+</body>
+
+</html>

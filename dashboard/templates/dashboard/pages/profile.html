@@ -1,0 +1,94 @@
+{% extends "../layouts/base.html" %}
+{% load static %}
+
+{% block title %} Profile {% endblock %}
+
+{% block page_tools %}
+<a role="button" class="btn btn-sm btn-outline-secondary mr-2" href="{% url 'dash:profile_edit' %}">Edit</a>
+<div class="btn-group">
+  <a role="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#DiableModalLabel">Disable</a>
+  <a role="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#DeleteModalLabel">Delete</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="section about-section gray-bg" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+              <div class="about-avatar text-center">
+                  <img class="shadow-sm p-1 bg-white border rounded-circle" src="{% if user.picture %}{{ user.picture.url }}{% else %}{% static 'assets/img/profile-picture.png' %}{% endif %}" width="200" height="200">
+              </div>
+          </div>
+            <div class="col-lg-6">
+              <h6 class="theme-color lead">{% if user.first_name or user.last_name %}{{ user.first_name|title }} {{ user.last_name|title }}  (@{{ user.username }}){% else %}{{ user.username }}{% endif %}{% if user.is_staff %}<small class="ml-2"><span class="badge badge-pill badge-success">staff</span></small>{% endif %}</h6>
+              <p>{{ user.bio }}</p>
+              <div class="row about-list">
+                  <div class="col-md-6">
+                      <div class="media">
+                          <label>Birthday</label>
+                          <p>{{ user.birthday }}</p>
+                      </div>
+                      <div class="media">
+                          <label>Joined on</label>
+                          <p>{{ user.date_joined }}</p>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="media">
+                          <label>E-mail</label>
+                          <p>{{ user.email }}</p>
+                      </div>
+                      <div class="media">
+                          <label>Last login</label>
+                          <p>{{ user.last_login }}</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DISABLE DIALOG BOX -->
+<div class="modal fade" id="DiableModalLabel" tabindex="-1" aria-labelledby="DiableModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Disable your account?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You are about to diable your account and you will not be able to login back. Do you wish to continue?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a role="button" class="btn btn-danger" href="{% url 'auth:disable' username=user.username %}">Disable</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE DIALOG BOX -->
+<div class="modal fade" id="DeleteModalLabel" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Delete your account?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You are about to delete your account and you will not be able to login back. Do you wish to continue?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a role="button" class="btn btn-danger" href="{% url 'auth:delete' username=user.username %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

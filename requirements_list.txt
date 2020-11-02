@@ -1,0 +1,8 @@
+Django
+django-crispy-forms
+django-environ
+google-api-python-client
+google-auth-oauthlib
+Pillow
+sorl-thumbnail
+six

@@ -1,0 +1,13 @@
+{% extends '../core/base.html' %}
+
+{% block title %} Page 404 {% endblock %}
+
+{% block content %}
+<main role="main" class="inner cover">
+    <h6 class="mb-2">Error 404</h6>
+    <h4 class="mb-5">
+        Page not found
+    </h4>
+    <a href="{% url 'core:home' %}" class="btn btn-primary btn-round">Home</a>
+</main>
+{% endblock %}
