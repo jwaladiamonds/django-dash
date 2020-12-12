@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 from dashboard.forms import ProfileForm
 from accounts.models import User
-from accounts.tools import activater, mailer
+from accounts.tools import activater
 
 
 @login_required
@@ -35,9 +35,9 @@ def users(request):
 @permission_required("is_staff", login_url='/dashboard/')
 def gmail(request):
     credentials = None
-    if mailer.activated:
-        credentials = mailer.credentials
-        credentials.email = mailer.email
+    # if mailer.activated:
+    #     credentials = mailer.credentials
+    #     credentials.email = mailer.email
     return render(request, 'dashboard/pages/gmail.html', {'credentials': credentials})
 
 

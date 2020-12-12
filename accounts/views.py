@@ -6,36 +6,37 @@ from django.contrib.auth import login, views
 from django.views.generic.edit import CreateView
 from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required, permission_required
+# from gmailer.gmail import mailer
 
-from accounts.tools import activater, mailer
+from accounts.tools import activater
 from accounts.forms import SignUpForm, LoginForm
 from accounts.models import User
 
-
-@login_required
-@permission_required("is_staff", login_url='/dashboard/')
-def gmail(request):
-    request.session['oauth_state'] = mailer.auth_state
-    return redirect(mailer.auth_uri)
-
-
-@login_required
-@permission_required("is_staff", login_url='/dashboard/')
-def gmail_verify(request):
-    code = request.GET.get('code', '')
-    state = request.GET.get('state', '')
-    if code and request.session.has_key('oauth_state') and state == request.session['oauth_state']:
-        mailer.verify(code)
-    else:
-        messages.error(request, "Invalid code/state found.")
-    return redirect('dash:gmail')
-
-
-@login_required
-@permission_required("is_staff", login_url='/dashboard/')
-def gmail_revoke(request):
-    mailer.revoke()
-    return redirect('dash:gmail')
+#
+# @login_required
+# @permission_required("is_staff", login_url='/dashboard/')
+# def gmail(request):
+#     request.session['oauth_state'] = mailer.auth_state
+#     return redirect(mailer.auth_uri)
+#
+#
+# @login_required
+# @permission_required("is_staff", login_url='/dashboard/')
+# def gmail_verify(request):
+#     code = request.GET.get('code', '')
+#     state = request.GET.get('state', '')
+#     if code and request.session.has_key('oauth_state') and state == request.session['oauth_state']:
+#         mailer.verify(code)
+#     else:
+#         messages.error(request, "Invalid code/state found.")
+#     return redirect('dash:gmail')
+#
+#
+# @login_required
+# @permission_required("is_staff", login_url='/dashboard/')
+# def gmail_revoke(request):
+#     mailer.revoke()
+#     return redirect('dash:gmail')
 
 
 class UserLogin(views.LoginView):

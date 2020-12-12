@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from accounts import views
 
 app_name = 'auth'
@@ -11,7 +11,5 @@ urlpatterns = [
     path('disable/<username>', views.user_disable, name='disable'),
     path('delete/<username>', views.user_delete, name='delete'),
     path('verify/<username>/<token>', views.user_verify_email, name='verify_email'),
-    path('gmail/', views.gmail, name='gmail'),
-    path('gmail/verify', views.gmail_verify, name='gmail_verify'),
-    path('gmail/revoke', views.gmail_revoke, name='gmail_revoke'),
+    path('gmail/', include('gmailer.urls')),
 ]

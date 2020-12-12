@@ -5,6 +5,7 @@ from django.contrib import messages
 INSTALLED_APPS += [
     'crispy_forms',
     'sorl.thumbnail',
+    'gmailer',
     'accounts',
     'dashboard',
     'core',
